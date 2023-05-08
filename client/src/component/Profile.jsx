@@ -11,7 +11,7 @@ const his=useHistory();
 
   useEffect(() => {
      const checkLogin= async ()=>{
-      let val= await axios.get("http://localhost:8000/login");
+      let val= await axios.get("http://localhost:3001/login");
       setLogin(val.data.login)
       if(val.data.user)
       {

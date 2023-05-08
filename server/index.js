@@ -12,7 +12,7 @@ const saltRounds = 10;
 
 
 
-const PORT=process.env.PORT || 8000;
+const PORT=process.env.PORT || 3001;
 
 const app=express();
 
@@ -38,7 +38,7 @@ const db=mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'',
-    database:'login_react'
+    database:'etudiants'
 })
 
 
@@ -64,7 +64,7 @@ app.post("/register",(req,res)=>{
         console.log(err);
        }
        else{
-        let sqll=`select * from users where email='${email}'`;
+        let sqll=`select * from etudiants where email='${email}'`;
         db.query(sqll,(er,ress)=>{
             if(ress.length > 0)
             {
@@ -72,7 +72,7 @@ app.post("/register",(req,res)=>{
 
             }
             else{
-                let sql="INSERT INTO `users` SET ?";
+                let sql="INSERT INTO `etudiants` SET ?";
                 db.query(sql,data,(err,result)=>{
                     if(err)
                     {
@@ -106,7 +106,7 @@ app.post("/login",(req,res)=>{
     // console.log(email);
         
       
-        let sql=`select * from users where email='${email}'`;
+        let sql=`select * from etudiants where email='${email}'`;
         // console.log(sql);
         db.query(sql,(err,result)=>{
             if(err)

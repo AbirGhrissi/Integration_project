@@ -5,7 +5,12 @@ import { useHistory } from 'react-router-dom';
 const Register = () => {
     const [user, setUser] = useState({
         email:"",
-        password:""
+        password:"",
+        nom:"",
+        prenom:"",
+        carte_etu:"",
+        classe:""
+
     })
    
     const [msg,setMsg]= useState("");
@@ -15,7 +20,7 @@ const Register = () => {
 
     const onSub= async (e)=>{
         e.preventDefault();
-       let val=  await axios.post("http://localhost:8000/register",user);
+       let val=  await axios.post("http://localhost:3001/register",user);
 
       
        if(val.data.msg)
@@ -32,7 +37,7 @@ const Register = () => {
 
     useEffect(() => {
         const checkLogin= async ()=>{
-         let val= await axios.get("http://localhost:8000/login");
+         let val= await axios.get("http://localhost:3001/login");
         
          if(val.data.user)
          {
@@ -82,7 +87,22 @@ const Register = () => {
     <label for="pwd">Password:</label>
     <input type="password" className="form-control" placeholder="Enter password" name="password" value={user.password} onChange={userInput} required />
   </div>
-  
+  <div className="form-group">
+    <label for="pwd">Last Name</label>
+    <input type="text" className="form-control" placeholder="Enter last name" name="nom" value={user.nom} onChange={userInput} required />
+  </div>
+  <div className="form-group">
+    <label for="pwd">First Name</label>
+    <input type="text" className="form-control" placeholder="Enter first name" name="prenom" value={user.prenom} onChange={userInput} required />
+  </div>
+  <div className="form-group">
+    <label for="pwd">Student Card:</label>
+    <input type="text" className="form-control" placeholder="Enter student card" name="carte_etu" value={user.carte_etu} onChange={userInput} required />
+  </div>
+  <div className="form-group">
+    <label for="pwd">Class:</label>
+    <input type="text" className="form-control" placeholder="Enter your class" name="classe" value={user.classe} onChange={userInput} required />
+  </div>
   <button type="submit" className="btn btn-primary">Submit</button>
 </form>
            </div>

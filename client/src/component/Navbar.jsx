@@ -8,7 +8,7 @@ const Navbar = () => {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     const checkLogin= async ()=>{
-     let val= await axios.get("http://localhost:8000/login");
+     let val= await axios.get("http://localhost:3001/login");
     setLogin(val.data.login)
   
     }
@@ -18,7 +18,7 @@ const Navbar = () => {
         <>
         <nav className="navbar navbar-expand-lg bg-dark">
          <div className="container">
-  <NavLink className="navbar-brand text-white" to="/">Navbar</NavLink>
+  <NavLink className="navbar-brand text-white" to="/">Iset kebili</NavLink>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>

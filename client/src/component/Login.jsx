@@ -18,7 +18,7 @@ const Login = () => {
 
     const onSub=async (e)=>{
         e.preventDefault();
-        let val=  await axios.post("http://localhost:8000/login",user);
+        let val=  await axios.post("http://localhost:3001/login",user);
  console.log(val);
 setShow(val.data.login);
 if(val.data.msg)
@@ -46,7 +46,7 @@ if(val.data.msg)
 
     useEffect(() => {
        const checkLogin= async ()=>{
-        let val= await axios.get("http://localhost:8000/login");
+        let val= await axios.get("http://localhost:3001/login");
         console.log(val);
         if(val.data.user)
         {
